@@ -75,12 +75,11 @@
       <nav class="navbar">
         <a href="/" class="active">Home</a>
         <a href="/hakkinda">About</a>
-        {% if not session.get('user_id') %}
         <a href="/kayitol">Sign Up</a>
         <a href="/girisyap">Sign In</a>
-        {% else %} {% if show_logout_button %}
+        {% if show_logout_button %}
         <a href="/cikisyap">Logout</a>
-        {% endif %} {% endif %}
+        {% endif %}
       </nav>
     </header>
     <main>{% block icerik %}{% endblock %}</main>
