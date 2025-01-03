@@ -13,11 +13,11 @@ def create_connection():
 
 @app.route("/")
 def anasayfa():
-    return render_template("index.html",title="Home")
+    return render_template("index.html",title="Home", show_logout_button=False)
 
 @app.route("/hakkinda")
 def hakkinda():
-    return render_template("hakkinda.html",title="About") 
+    return render_template("hakkinda.html",title="About", show_logout_button=False) 
 
 @app.route("/admindestek", methods=["GET"])
 def admindestek():
@@ -40,7 +40,7 @@ def admindestek():
             photo_data = None
         tickets_with_photo_data.append((ticket_id, description, photo_data, user_id))
 
-    return render_template("admindestek.html", tickets=tickets_with_photo_data)
+    return render_template("admindestek.html", tickets=tickets_with_photo_data, show_logout_button=True)
 
 
 
@@ -76,7 +76,7 @@ def girisyap():
             return redirect("/")
 
     else:
-        return render_template("giris.html", title="Giriş Yap")
+        return render_template("giris.html", title="Giriş Yap", show_logout_button=False)
 
 
 @app.route("/dashboard", methods=["GET"])
@@ -136,12 +136,12 @@ def destek():
             connection.close()
 
             flash("Destek bileti başarıyla gönderildi.", "success")
-            return redirect("/")
+            return redirect("/dashboard")
         else:
             flash("Kullanıcı oturumu açık değil.", "error")
             return redirect("/girisyap")
 
-    return render_template("destek.html", title="Destek Gönder")
+    return render_template("destek.html", title="Destek Gönder", show_logout_button=True)
 
 
 @app.route("/kayitol",methods=["GET","POST"])
@@ -162,7 +162,15 @@ def kayitol():
         connection.commit()
         return redirect("/")
     else:
-        return render_template("kayitol.html",title="Kayıt ol")
+        return render_template("kayitol.html",title="Kayıt ol", show_logout_button=False)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=6000,debug=True)
+
+@app.route("/cikisyap", methods=["GET"])
+def cikisyap():
+    session.clear()
+    
+    flash("Başarıyla çıkış yapıldı.", "success")
+    
+    return redirect("/")

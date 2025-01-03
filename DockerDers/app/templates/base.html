@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}My Website{% endblock %}</title>
+    <title>{% block title %}Cybersecurity Support{% endblock %}</title>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -75,8 +75,12 @@
       <nav class="navbar">
         <a href="/" class="active">Home</a>
         <a href="/hakkinda">About</a>
+        {% if not session.get('user_id') %}
         <a href="/kayitol">Sign Up</a>
         <a href="/girisyap">Sign In</a>
+        {% else %} {% if show_logout_button %}
+        <a href="/cikisyap">Logout</a>
+        {% endif %} {% endif %}
       </nav>
     </header>
     <main>{% block icerik %}{% endblock %}</main>
