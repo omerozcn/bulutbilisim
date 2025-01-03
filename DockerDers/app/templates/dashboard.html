@@ -108,6 +108,7 @@
         align-items: center;
         width: 150px;
         height: 100%;
+        padding: 10px 20px;
         background: #00abf0;
         border: 2px solid #00abf0;
         border-radius: 8px;
@@ -153,12 +154,15 @@
       .btn-box a:hover::before {
         width: 100%;
       }
+      .btn-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
-    <div class="btn-box">
-      <a href="/girisyap">Let's Talk</a>
-    </div>
     <section class="ticket">
       <div class="ticket-details">
         <h2>Your Support Ticket</h2>
@@ -175,6 +179,9 @@
         {% endif %}
       </div>
     </section>
+    <div class="btn-box">
+      <a href="/destek">New Ticket</a>
+    </div>
   </body>
 </html>
 {% endblock %}
