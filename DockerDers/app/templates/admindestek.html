@@ -1,0 +1,138 @@
+{% extends "base.html" %} {% block icerik %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <header class="header">
+      <a href="#" class="logo">Ömer</a>
+      <nav class="navbar">
+        <a href="/" class="active">Home</a>
+        <a href="/hakkinda">About</a>
+        <a href="/kayitol">Sign Up</a>
+        <a href="/girisyap">Sign In</a>
+      </nav>
+    </header>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Support Tickets</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #081b29;
+        color: #ededed;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 10%;
+        background: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .navbar a {
+        font-size: 18px;
+        color: #ff009d;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 35px;
+      }
+
+      .navbar a:hover,
+      .navbar a.active {
+        color: #00abf0;
+      }
+      .logo {
+        position: relative;
+        font-size: 25px;
+        color: #ededed;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .logo::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #081b29;
+        animation: showRight 1s ease forwards;
+        animation-delay: 0.4s;
+      }
+
+      .ticket-list {
+        padding: 40px 10%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .ticket {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .ticket h2 {
+        font-size: 24px;
+        color: #00abf0;
+      }
+
+      .ticket p {
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: #ededed;
+      }
+
+      .ticket img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="ticket-list">
+      <h1 style="text-align: center; color: #00abf0">All Support Tickets</h1>
+
+      {% for ticket in tickets %}
+      <div class="ticket">
+        <h2>Ticket #{{ ticket[0] }}</h2>
+        <p><strong>User ID:</strong> {{ ticket[3] }}</p>
+        <p><strong>Message:</strong> {{ ticket[1] }}</p>
+
+        {% if ticket[2] %}
+        <p><strong>Attached Photo:</strong></p>
+        <img
+          src="data:image/png;base64,{{ ticket[2] }}"
+          alt="Support Ticket Photo"
+        />
+        {% else %}
+        <p>No photo attached.</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends "base.html" %} {% block icerik %}
+<section class="about">
+  <div class="about-content">
+    <h1>About</h1>
+    <p>
+      Hello! I am Ömer Özcan, a Computer Engineering student at Afyon Kocatepe
+      University and a researcher specializing in cybersecurity. I aim to use
+      this platform to enhance my expertise in cybersecurity and share my
+      knowledge with others.
+    </p>
+    <br>
+    <h2>Experience and Certifications</h2>
+    <ul>
+      <li>Ethical Hacking and Penetration Testing</li>
+      <li>Secure Software Development</li>
+      <li>Vulnerability Assessment</li>
+    </ul>
+    <p>My certifications in these fields include:</p>
+    <ul>
+      <li>Networking Basics</li>
+      <li>API Security Fundamentals</li>
+      <li>Introduction to Cybersecurity</li>
+      <li>Siber Vatan Bootcamp 2024</li>
+      <li>Ethical Hacker</li>
+    </ul>
+
+    <h2>Languages</h2>
+    <ul>
+      <li>Turkish (Native)</li>
+      <li>English (Advanced)</li>
+      <li>German (Elementary)</li>
+    </ul>
+
+    <h2>How Can I Help You?</h2>
+    <p>
+      I provide individual support in cybersecurity topics. I am here to solve
+      your technical issues, provide guidance, and share strategic ideas.
+    </p>
+    <br>
+    <h2>Contact</h2>
+
+    <div class="contact-links">
+      <a href="mailto:omerozcan3808@gmail.com"
+        ><i class="bx bx-envelope"></i> E-Mail</a
+      >
+      <a href="tel:+905053133515"><i class="bx bxl-whatsapp"></i> Phone</a>
+      <a href="https://www.linkedin.com/in/ömer-özcan-6aa14a20a"
+        ><i class="bx bxl-linkedin"></i> Linkedin</a
+      >
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wghtQ300;400;500;600;700;800;900&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    background: #081b29;
+    color: #ededed;
+  }
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .logo {
+    position: relative;
+    font-size: 25px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .logo::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #081b29;
+    animation: showRight 1s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  .navbar a {
+    font-size: 18px;
+    color: #ff009d;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+  }
+
+  .navbar a:hover,
+  .navbar a.active {
+    color: #00abf0;
+  }
+  .about {
+    background: #081b29;
+    color: #ededed;
+    padding: 100px 10%;
+    font-size: 20px;
+  }
+
+  .about-content h1,
+  .about-content h2 {
+    color: #00abf0;
+    margin-bottom: 20px;
+    font-size: 25px;
+  }
+
+  .about-content ul {
+    margin: 15px 0;
+    list-style: disc;
+    padding-left: 20px;
+    font-size: 16px;
+  }
+
+  .contact-links a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 15px;
+    background: #00abf0;
+    color: #081b29;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+
+  .contact-links a:hover {
+    background: #ff009d;
+    color: #fff;
+  }
+</style>
+{% endblock %}

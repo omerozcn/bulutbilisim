@@ -1,0 +1,169 @@
+{% extends "base.html" %} 
+{% block icerik %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support Ticket Submission</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wghtQ300;400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #081b29;
+        color: #ededed;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 10%;
+        background: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .logo {
+        position: relative;
+        font-size: 25px;
+        color: #ededed;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .navbar a {
+        font-size: 18px;
+        color: #ff009d;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 35px;
+      }
+
+      .navbar a:hover,
+      .navbar a.active {
+        color: #00abf0;
+      }
+
+      .ticket {
+        height: 100vh;
+        background: #081b29;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10%;
+      }
+
+      .ticket-form {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .ticket-form h2 {
+        font-size: 36px;
+        color: #00abf0;
+        margin-bottom: 20px;
+      }
+
+      .ticket-form label {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .ticket-form input,
+      .ticket-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        background: #081b29;
+        border: 2px solid #00abf0;
+        border-radius: 8px;
+        color: #ededed;
+        font-size: 16px;
+      }
+
+      .ticket-form button {
+        background: #00abf0;
+        border: 2px solid #00abf0;
+        color: #081b29;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .ticket-form button:hover {
+        background: #081b29;
+        color: #00abf0;
+      }
+
+      .ticket-form input[type="file"] {
+        background: transparent;
+        border: none;
+      }
+
+      .ticket-form .photo-preview {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="ticket">
+      <div class="ticket-form">
+        <h2>Submit Your Support Ticket</h2>
+        <form method="POST" action="/destek" enctype="multipart/form-data">
+          <label for="inp_description">Message</label>
+          <textarea id="inp_description" name="inp_description" rows="6" required></textarea>
+
+          <label for="photo">Attach a Photo (Optional)</label>
+          <input type="file" id="photo" name="photo" accept="image/*" />
+          <div class="photo-preview" id="photo-preview"></div>
+
+          <button type="submit">Submit Ticket</button>
+        </form>
+      </div>
+    </section>
+
+    <script>
+      const photoInput = document.getElementById("photos");
+      const photoPreview = document.getElementById("photo-preview");
+
+      photoInput.addEventListener("change", function () {
+        const file = photoInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            photoPreview.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-width: 100%; height: auto; border-radius: 8px;" />`;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          photoPreview.innerHTML = "";
+        }
+      });
+    </script>
+  </body>
+</html>
+{% endblock %}

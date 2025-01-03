@@ -1,0 +1,125 @@
+{% extends "base.html" %} {% block icerik %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Support Ticket</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Burada stilinizi özelleştirebilirsiniz */
+      body {
+        background: #081b29;
+        color: #ededed;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 10%;
+        background: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .logo {
+        position: relative;
+        font-size: 25px;
+        color: #ededed;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .logo::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #081b29;
+        animation: showRight 1s ease forwards;
+        animation-delay: 0.4s;
+      }
+
+      .ticket {
+        height: 100vh;
+        background: #081b29;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10%;
+      }
+
+      .navbar a {
+        font-size: 18px;
+        color: #ff009d;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 35px;
+      }
+
+      .navbar a:hover,
+      .navbar a.active {
+        color: #00abf0;
+      }
+
+      .ticket-details {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .ticket-details h2 {
+        font-size: 36px;
+        color: #00abf0;
+        margin-bottom: 20px;
+      }
+
+      .ticket-details p {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+        color: #ededed;
+      }
+
+      .ticket-details img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="ticket">
+      <div class="ticket-details">
+        <h2>Your Support Ticket</h2>
+        <p><strong>Message:</strong> {{ description }}</p>
+
+        {% if photo_data %}
+        <p><strong>Attached Photo:</strong></p>
+        <img
+          src="data:image/png;base64,{{ photo_data }}"
+          alt="Support Ticket Photo"
+        />
+        {% else %}
+        <p>No photo attached.</p>
+        {% endif %}
+      </div>
+    </section>
+  </body>
+</html>
+{% endblock %}

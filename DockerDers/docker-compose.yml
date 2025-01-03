@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  pythonproje:
+    build: ./app
+    volumes:
+      - ./app:/app
+    ports:
+      - "81:6000"
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token eyJhIjoiMGQwYWE4YTkwMzIxMWFlYTQ1NTg4N2Y3NDMzY2MyNDQiLCJ0IjoiMWFlNjM3MDUtZjc5Ny00MjU3LWE4YjctNmJmM2ZjNDcyNGE0IiwicyI6Ik1EVmpORFZpTWpJdE5qUmlOQzAwWWpRMExUazFNREV0TmpFeVl6STRabVV5T0dWaCJ9
+    network_mode: host
+    depends_on:
+        - pythonproje

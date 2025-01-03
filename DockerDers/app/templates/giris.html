@@ -1,0 +1,175 @@
+{% extends "base.html" %} {% block icerik %}
+<section class="signin">
+  <div class="signin-container">
+    <h1>Sign In</h1>
+    <p>Please enter your credentials to log in.</p>
+
+    <form action="/girisyap" method="POST" class="signin-form">
+      <div class="form-group">
+        <label for="inp_username">Username</label>
+        <input
+          type="text"
+          id="inp_username"
+          name="inp_username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="inp_password">Password</label>
+        <input
+          type="password"
+          id="inp_password"
+          name="inp_password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+      <button type="submit" class="signin-btn">Sign In</button>
+    </form>
+
+    <p class="signup-link">
+      Don't have an account? <a href="/kayitol">Sign Up</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    background: #081b29;
+    color: #ededed;
+  }
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .logo {
+    position: relative;
+    font-size: 25px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .logo::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #081b29;
+    animation: showRight 1s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  .navbar a {
+    font-size: 18px;
+    color: #ff009d;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+  }
+
+  .navbar a:hover,
+  .navbar a.active {
+    color: #00abf0;
+  }
+  .signin {
+    background: #081b29;
+    color: #ededed;
+    padding: 50px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .signin-container {
+    background: #fff;
+    color: #081b29;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .signin-container h1 {
+    color: #00abf0;
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+
+  .signin-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .signin-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .signin-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .signin-form input:focus {
+    border-color: #00abf0;
+  }
+
+  .signin-btn {
+    background: #00abf0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .signin-btn:hover {
+    background: #ff009d;
+  }
+
+  .signup-link {
+    margin-top: 15px;
+    color: #00abf0;
+    font-size: 14px;
+  }
+
+  .signup-link a {
+    color: #ff009d;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}
